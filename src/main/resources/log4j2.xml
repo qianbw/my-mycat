@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" monitorInterval="60">
+	<Appenders>
+		<RollingFile name="fixedTimeFileAppender" fileName="my-mycat.log"
+			filePattern="my-mycat.log.%d{yyyy-MM-dd_HH}-%i">
+			<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %c{1}(%L) - %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="200 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="24" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<AsyncLogger name="com.example" level="info" additivity="false"
+			includeLocation="true">
+			<AppenderRef ref="fixedTimeFileAppender" />
+		</AsyncLogger>
+
+		<AsyncLogger name="com.alibaba.druid" level="info" additivity="false"
+			includeLocation="true">
+			<AppenderRef ref="fixedTimeFileAppender" />
+		</AsyncLogger>
+
+		<AsyncLogger name="appMonitor" level="info" additivity="false"
+			includeLocation="true">
+			<AppenderRef ref="appMonitorFixedTimeFileAppender" />
+		</AsyncLogger>
+
+		<Root level="info">
+			<AppenderRef ref="fixedTimeFileAppender" />
+		</Root>
+	</Loggers>
+</Configuration>

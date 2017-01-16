@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration  
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<properties>
+		<property name="dialect" value="mysql" />
+		<property name="pageSqlId" value=".*Page$" />
+	</properties>
+
+	<settings>
+		<setting name="cacheEnabled" value="false" />
+		<setting name="lazyLoadingEnabled" value="true" />
+		<setting name="multipleResultSetsEnabled" value="true" />
+		<setting name="useColumnLabel" value="true" />
+		<setting name="useGeneratedKeys" value="false" />
+		<setting name="autoMappingBehavior" value="FULL" />
+		<setting name="defaultExecutorType" value="SIMPLE" />
+		<setting name="defaultStatementTimeout" value="60" />
+		<setting name="safeRowBoundsEnabled" value="false" />
+		<setting name="mapUnderscoreToCamelCase" value="false" />
+		<setting name="localCacheScope" value="SESSION" />
+		<setting name="jdbcTypeForNull" value="OTHER" />
+		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
+	</settings>
+
+	<mappers>
+		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/StaffDAOMapper.xml" />
+		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/AccessDAOMapper.xml" />
+		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/ArchitectDAOMapper.xml" />
+		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/ConfigDAOMapper.xml" />
+		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/GroupDAOMapper.xml" />
+		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/QueueDAOMapper.xml" />
+		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/RecordDAOMapper.xml" />
+		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/SessionDAOMapper.xml" />
+		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/FileIndexDaoMapper.xml" />
+	</mappers>
+</configuration>
