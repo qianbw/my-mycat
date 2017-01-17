@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.integration.dao.OrderStatusInterceptionDAO">
+	<resultMap id="result" type="com.example.common.dto.OrderStatusInterceptionDTO">
+		<result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+		<result column="status_interception" jdbcType="VARCHAR" property="statusInterception" />
+	</resultMap>
+
+	<insert id="add" parameterType="com.example.common.dto.OrderStatusInterceptionDTO">
+		INSERT INTO
+		order_status_interception(order_status, status_interception)
+		VALUES(#{orderStatus,jdbcType=VARCHAR}, #{statusInterception,jdbcType=VARCHAR})
+	</insert>
+
+    <select id="getList" parameterType="java.lang.String" resultMap="result">
+		SELECT * FROM order_status_interception where order_status＝#{orderStatus,jdbcType=VARCHAR}
+	</select>
+</mapper>
