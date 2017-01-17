@@ -1,6 +1,7 @@
 package com.example;
 
 import com.example.common.dto.CourierDTO;
+import com.example.common.dto.OrderCargoDTO;
 import com.example.common.dto.OrdersDTO;
 import com.example.service.CommonService;
 import org.junit.runner.RunWith;
@@ -53,6 +54,21 @@ public class CommonServiceTest extends AbstractJUnit4SpringContextTests {
             ordersDTO.setCreateTime(new Timestamp(System.currentTimeMillis()));
             ordersDTO.setModifiedTime(new Timestamp(System.currentTimeMillis()));
             int result = commonService.addOrders(ordersDTO);
+            System.out.println(String.valueOf(result));
+        }
+    }
+
+    /**
+     * 往子表写数据，要自动跟随主表
+     */
+    @org.junit.Test
+    public void addOrderCargo() {
+        OrderCargoDTO orderCargoDTO = new OrderCargoDTO();
+
+        for (int loopIdx = 1; loopIdx < 10; loopIdx++) {
+            orderCargoDTO.setCargoId(String.valueOf(loopIdx));
+            orderCargoDTO.setOrderId(String.valueOf(loopIdx));
+            int result = commonService.addOrderCargo(orderCargoDTO);
             System.out.println(String.valueOf(result));
         }
     }

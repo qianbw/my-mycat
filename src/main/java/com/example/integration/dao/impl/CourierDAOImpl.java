@@ -1,6 +1,3 @@
-/**
- * Copyright (C) 2014 Webank Group Holding Limited
- */
 package com.example.integration.dao.impl;
 
 import com.example.common.dto.CourierDTO;
