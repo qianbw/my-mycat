@@ -26,14 +26,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</settings>
 
 	<mappers>
-		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/StaffDAOMapper.xml" />
-		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/AccessDAOMapper.xml" />
-		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/ArchitectDAOMapper.xml" />
-		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/ConfigDAOMapper.xml" />
-		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/GroupDAOMapper.xml" />
-		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/QueueDAOMapper.xml" />
-		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/RecordDAOMapper.xml" />
-		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/SessionDAOMapper.xml" />
-		<mapper resource="cn/webank/mumble/ems/irsc/integration/dao/mapper/FileIndexDaoMapper.xml" />
+		<mapper resource="mapper/CourierDAOMapper.xml" />
 	</mappers>
 </configuration>
