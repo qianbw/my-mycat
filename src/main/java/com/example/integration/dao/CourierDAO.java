@@ -11,5 +11,5 @@ public interface CourierDAO {
 
     public int add(CourierDTO courierDTO) throws SQLException;
 
-    public List<CourierDAO> getCourierList(Map<String, Object> map) throws SQLException;
+    public List<CourierDAO> getList(String id) throws SQLException;
 }

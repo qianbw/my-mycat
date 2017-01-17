@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.example.integration.dao.OrdersDAO">
+	<resultMap id="result" type="com.example.common.dto.OrdersDTO">
+		<result column="id" jdbcType="VARCHAR" property="id" />
+		<result column="initialpoint" jdbcType="VARCHAR" property="initialpoint" />
+		<result column="endpoint" jdbcType="VARCHAR" property="endpoint" />
+		<result column="order_status" jdbcType="VARCHAR" property="orderStatus" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+	</resultMap>
+
+	<insert id="add" parameterType="com.example.common.dto.OrdersDTO">
+		INSERT INTO
+		orders(id, initialpoint,endpoint,order_status,create_time,modified_time)
+		VALUES(#{id,jdbcType=VARCHAR}, #{initialpoint,jdbcType=VARCHAR}, #{endpoint,jdbcType=VARCHAR}, #{orderStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP})
+	</insert>
+
+    <select id="getList" parameterType="java.lang.String" resultMap="result">
+		SELECT * FROM orders where id＝#{id,jdbcType=VARCHAR}
+	</select>
+</mapper>

@@ -27,5 +27,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 	<mappers>
 		<mapper resource="mapper/CourierDAOMapper.xml" />
+		<mapper resource="mapper/OrdersDAOMapper.xml" />
 	</mappers>
 </configuration>

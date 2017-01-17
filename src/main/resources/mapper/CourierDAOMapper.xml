@@ -13,7 +13,7 @@
 		VALUES(#{id}, #{name})
 	</insert>
 
-	<select id="getCourierList" parameterType="java.lang.String" resultMap="result">
-		SELECT * FROM courier where name＝#{name,jdbcType=VARCHAR}
+	<select id="getList" parameterType="java.lang.String" resultMap="result">
+		SELECT * FROM courier where id＝#{id,jdbcType=VARCHAR}
 	</select>
 </mapper>
