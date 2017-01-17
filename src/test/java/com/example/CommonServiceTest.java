@@ -2,6 +2,7 @@ package com.example;
 
 import com.example.common.dto.CourierDTO;
 import com.example.common.dto.OrderCargoDTO;
+import com.example.common.dto.OrderStatusInterceptionDTO;
 import com.example.common.dto.OrdersDTO;
 import com.example.service.CommonService;
 import org.junit.runner.RunWith;
@@ -69,6 +70,21 @@ public class CommonServiceTest extends AbstractJUnit4SpringContextTests {
             orderCargoDTO.setCargoId(String.valueOf(loopIdx));
             orderCargoDTO.setOrderId(String.valueOf(loopIdx));
             int result = commonService.addOrderCargo(orderCargoDTO);
+            System.out.println(String.valueOf(result));
+        }
+    }
+
+    /**
+     * 往全局写数据，所有表的数据会一样
+     */
+    @org.junit.Test
+    public void addOrderStatusInterception() {
+        OrderStatusInterceptionDTO orderStatusInterceptionDTO = new OrderStatusInterceptionDTO();
+
+        for (int loopIdx = 1; loopIdx < 10; loopIdx++) {
+            orderStatusInterceptionDTO.setOrderStatus(String.valueOf(loopIdx));
+            orderStatusInterceptionDTO.setStatusInterception(String.valueOf(loopIdx));
+            int result = commonService.addOrderStatusInterception(orderStatusInterceptionDTO);
             System.out.println(String.valueOf(result));
         }
     }
