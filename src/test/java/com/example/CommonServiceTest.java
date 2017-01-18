@@ -1,9 +1,6 @@
 package com.example;
 
-import com.example.common.dto.CourierDTO;
-import com.example.common.dto.OrderCargoDTO;
-import com.example.common.dto.OrderStatusInterceptionDTO;
-import com.example.common.dto.OrdersDTO;
+import com.example.common.dto.*;
 import com.example.service.CommonService;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -115,6 +112,20 @@ public class CommonServiceTest extends AbstractJUnit4SpringContextTests {
             commonService.addOrderAndCargoInMultiDB();
         } catch (Exception e) {
             System.out.println(e);
+        }
+    }
+
+    /**
+     * 使用全局序列号
+     */
+    @org.junit.Test
+    public void addCustomer() {
+        CustomerDTO customerDTO = new CustomerDTO();
+
+        for (int loopIdx = 1; loopIdx < 10; loopIdx++) {
+            customerDTO.setName("name_" + String.valueOf(loopIdx));
+            int result = commonService.addCustomer(customerDTO);
+            System.out.println(String.valueOf(result));
         }
     }
 }

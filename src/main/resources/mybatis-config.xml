@@ -30,5 +30,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mapper/OrdersDAOMapper.xml" />
 		<mapper resource="mapper/OrderCargoDAOMapper.xml" />
 		<mapper resource="mapper/OrderStatusInterceptionDAOMapper.xml" />
+		<mapper resource="mapper/CustomerDAOMapper.xml" />
 	</mappers>
 </configuration>

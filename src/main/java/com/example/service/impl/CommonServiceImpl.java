@@ -1,13 +1,7 @@
 package com.example.service.impl;
 
-import com.example.common.dto.CourierDTO;
-import com.example.common.dto.OrderCargoDTO;
-import com.example.common.dto.OrderStatusInterceptionDTO;
-import com.example.common.dto.OrdersDTO;
-import com.example.integration.dao.CourierDAO;
-import com.example.integration.dao.OrderCargoDAO;
-import com.example.integration.dao.OrderStatusInterceptionDAO;
-import com.example.integration.dao.OrdersDAO;
+import com.example.common.dto.*;
+import com.example.integration.dao.*;
 import com.example.service.CommonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +33,10 @@ public class CommonServiceImpl implements CommonService {
     @Autowired
     @Qualifier("com.example.integration.dao.impl.OrderStatusInterceptionDAO")
     private OrderStatusInterceptionDAO orderStatusInterceptionDAO;
+
+    @Autowired
+    @Qualifier("com.example.integration.dao.impl.CustomerDAO")
+    private CustomerDAO customerDAO;
 
     @Override
     public int addCourier(CourierDTO courierDTO) {
@@ -151,5 +149,17 @@ public class CommonServiceImpl implements CommonService {
                 }
             }
         }
+    }
+
+    @Override
+    public int addCustomer(CustomerDTO customerDTO) {
+        int result = 0;
+        try {
+            result = customerDAO.add(customerDTO);
+        } catch (SQLException e) {
+            LOGGER.error("", e);
+        }
+
+        return result;
     }
 }

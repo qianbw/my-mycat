@@ -19,7 +19,7 @@ public class CourierDAOImpl extends AbstractSimpleDAO implements CourierDAO {
     }
 
     @Override
-    public List<CourierDAO> getList(String id) throws SQLException {
+    public List<CourierDTO> getList(String id) throws SQLException {
         try (BaseSqlSession session = getSession()) {
             return session.getMapper(CourierDAO.class).getList(id);
         }
