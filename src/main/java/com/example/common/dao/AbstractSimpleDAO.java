@@ -1,4 +1,4 @@
-package com.example.common.util;
+package com.example.common.dao;
 
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;

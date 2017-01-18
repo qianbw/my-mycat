@@ -1,11 +1,9 @@
 package com.example.integration.dao.impl;
 
 import com.example.common.dto.OrderStatusInterceptionDTO;
-import com.example.common.dto.OrdersDTO;
-import com.example.common.util.AbstractSimpleDAO;
-import com.example.common.util.BaseSqlSession;
+import com.example.common.dao.AbstractSimpleDAO;
+import com.example.common.dao.BaseSqlSession;
 import com.example.integration.dao.OrderStatusInterceptionDAO;
-import com.example.integration.dao.OrdersDAO;
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;

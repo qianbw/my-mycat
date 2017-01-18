@@ -1,8 +1,8 @@
 package com.example.integration.dao.impl;
 
 import com.example.common.dto.OrderCargoDTO;
-import com.example.common.util.AbstractSimpleDAO;
-import com.example.common.util.BaseSqlSession;
+import com.example.common.dao.AbstractSimpleDAO;
+import com.example.common.dao.BaseSqlSession;
 import com.example.integration.dao.OrderCargoDAO;
 import org.springframework.stereotype.Repository;
 
