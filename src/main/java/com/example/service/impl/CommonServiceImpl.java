@@ -90,14 +90,45 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
-    public void addOrderAndCargo() throws Exception {
+    public void addOrderAndCargoInSingleDB() throws Exception {
 
         OrdersDTO ordersDTO = new OrdersDTO();
         OrderCargoDTO orderCargoDTO = new OrderCargoDTO();
 
-        for (int loopIdx = 12; loopIdx < 20; loopIdx++) {
+        int loopIdx = 12;
+        ordersDTO.setId(String.valueOf(loopIdx));
+        ordersDTO.setInitialpoint(String.valueOf(loopIdx));
+        ordersDTO.setEndpoint(String.valueOf(loopIdx));
+        ordersDTO.setOrderStatus(String.valueOf(loopIdx));
+        ordersDTO.setCreateTime(new Timestamp(System.currentTimeMillis()));
+        ordersDTO.setModifiedTime(new Timestamp(System.currentTimeMillis()));
+        int result = ordersDAO.add(ordersDTO);
+        if (1 == result) {
+            System.out.println("addOrder success:" + loopIdx);
 
-            if (18 == loopIdx) {
+            orderCargoDTO.setCargoId(String.valueOf(loopIdx));
+            orderCargoDTO.setOrderId(String.valueOf(loopIdx));
+            result = orderCargoDAO.add(orderCargoDTO);
+            if (result != 1) {
+                System.out.println("addOrderAndCargo error:" + loopIdx);
+            } else {
+                System.out.println("addOrderAndCargo success:" + loopIdx);
+            }
+        }
+
+        throw new Exception();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+    public void addOrderAndCargoInMultiDB() throws Exception {
+
+        OrdersDTO ordersDTO = new OrdersDTO();
+        OrderCargoDTO orderCargoDTO = new OrderCargoDTO();
+
+        for (int loopIdx = 15; loopIdx < 25; loopIdx++) {
+
+            if (23 == loopIdx) {
                 throw new Exception();
             }
 

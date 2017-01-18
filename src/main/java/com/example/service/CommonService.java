@@ -15,6 +15,16 @@ public interface CommonService {
 
     public int addOrderStatusInterception(OrderStatusInterceptionDTO orderStatusInterceptionDTO);
 
-    public void addOrderAndCargo() throws Exception;
+    /**
+     * 单库同时修改2张表
+     * @throws Exception
+     */
+    public void addOrderAndCargoInSingleDB() throws Exception;
+
+    /**
+     * 跨库同时修改2张表
+     * @throws Exception
+     */
+    public void addOrderAndCargoInMultiDB() throws Exception;
 
 }

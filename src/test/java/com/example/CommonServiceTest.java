@@ -32,7 +32,7 @@ public class CommonServiceTest extends AbstractJUnit4SpringContextTests {
     public void addCourier() {
         CourierDTO courierDTO = new CourierDTO();
 
-        for (int loopIdx = 1; loopIdx < 10; loopIdx++) {
+        for (int loopIdx = 10; loopIdx < 11; loopIdx++) {
             courierDTO.setName(String.valueOf(loopIdx));
             courierDTO.setId(String.valueOf(loopIdx));
             int result = commonService.addCourier(courierDTO);
@@ -90,12 +90,29 @@ public class CommonServiceTest extends AbstractJUnit4SpringContextTests {
     }
 
     /**
-     * 一个事务内同时修改Order表和OrderCargo表（由于是父子表，所以没有跨库）
+     * 一个事务内同时修改Order表和OrderCargo表（一次增加一条记录，数据不跨库）
+     * <property name="handleDistributedTransactions">1</property>
+     * 该参数是控制分布式事务的，所以对于本case，设置为0或者1事务都会生效。
      */
     @org.junit.Test
-    public void addOrderAndCargo() {
+    public void addOrderAndCargoInSingleDB() {
         try {
-            commonService.addOrderAndCargo();
+            commonService.addOrderAndCargoInSingleDB();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    /**
+     * 一个事务内同时修改Order表和OrderCargo表（一次增加一条记录，数据不跨库）
+     * <property name="handleDistributedTransactions">0</property>
+     * 该参数是控制分布式事务的，所以对于本case，handleDistributedTransactions必须为0
+     * 否则会报错误：Distributed transaction is disabled!
+     */
+    @org.junit.Test
+    public void addOrderAndCargoInMultiDB() {
+        try {
+            commonService.addOrderAndCargoInMultiDB();
         } catch (Exception e) {
             System.out.println(e);
         }
