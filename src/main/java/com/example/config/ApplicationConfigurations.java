@@ -16,8 +16,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.sql.DataSource;
 
 @Configuration
+@EnableTransactionManagement
 public class ApplicationConfigurations {
     private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationConfigurations.class);
 
@@ -74,7 +80,7 @@ public class ApplicationConfigurations {
     private String jdbcFilters;
 
     @Bean(name = "dataSource", initMethod = "init", destroyMethod = "close")
-    public DruidDataSource setDataSource() {
+    public DataSource dataSource() {
         try {
             DruidDataSource ds = new DruidDataSource();
             ds.setUrl(jdbcUrl);
@@ -107,7 +113,7 @@ public class ApplicationConfigurations {
     @Bean(name = "sqlSessionFactory")
     public SqlSessionFactory setSqlSessionFactory() {
         SqlSessionFactoryBean factory = new SqlSessionFactoryBean();
-        factory.setDataSource(setDataSource());
+        factory.setDataSource(dataSource());
 
         DefaultResourceLoader resourceLoader = new DefaultResourceLoader();
         factory.setConfigLocation(resourceLoader.getResource("classpath:mybatis-config.xml"));
@@ -117,5 +123,12 @@ public class ApplicationConfigurations {
             LOGGER.error("", e);
             return null;
         }
+    }
+
+    @Bean(name = "transactionManager")
+    public PlatformTransactionManager transactionManager() {
+        DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
+        transactionManager.setDataSource(dataSource());
+        return transactionManager;
     }
 }

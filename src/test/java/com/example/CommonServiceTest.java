@@ -88,4 +88,16 @@ public class CommonServiceTest extends AbstractJUnit4SpringContextTests {
             System.out.println(String.valueOf(result));
         }
     }
+
+    /**
+     * 一个事务内同时修改Order表和OrderCargo表
+     */
+    @org.junit.Test
+    public void addOrderAndCargo() {
+        try {
+            commonService.addOrderAndCargo();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }

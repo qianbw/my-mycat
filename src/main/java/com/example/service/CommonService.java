@@ -15,4 +15,6 @@ public interface CommonService {
 
     public int addOrderStatusInterception(OrderStatusInterceptionDTO orderStatusInterceptionDTO);
 
+    public void addOrderAndCargo() throws Exception;
+
 }
