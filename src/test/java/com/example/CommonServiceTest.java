@@ -90,7 +90,7 @@ public class CommonServiceTest extends AbstractJUnit4SpringContextTests {
     }
 
     /**
-     * 一个事务内同时修改Order表和OrderCargo表
+     * 一个事务内同时修改Order表和OrderCargo表（由于是父子表，所以没有跨库）
      */
     @org.junit.Test
     public void addOrderAndCargo() {
