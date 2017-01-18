@@ -81,7 +81,7 @@ public class CommonServiceTest extends AbstractJUnit4SpringContextTests {
     public void addOrderStatusInterception() {
         OrderStatusInterceptionDTO orderStatusInterceptionDTO = new OrderStatusInterceptionDTO();
 
-        for (int loopIdx = 1; loopIdx < 10; loopIdx++) {
+        for (int loopIdx = 11; loopIdx < 20; loopIdx++) {
             orderStatusInterceptionDTO.setOrderStatus(String.valueOf(loopIdx));
             orderStatusInterceptionDTO.setStatusInterception(String.valueOf(loopIdx));
             int result = commonService.addOrderStatusInterception(orderStatusInterceptionDTO);
